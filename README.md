@@ -1,6 +1,6 @@
 # Aplicación de Productos Inswitch
 
-Una aplicación React que muestra una lista de productos y detalles de cada producto usando la API FakeStore.
+Una aplicación React en Vite que muestra una lista de productos y detalles de cada producto usando la API FakeStore.
 
 ## Características
 
