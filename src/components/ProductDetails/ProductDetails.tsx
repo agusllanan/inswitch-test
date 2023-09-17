@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Card, CardContent, Typography } from '@mui/material';
 import { Product } from '../../types';
 
-const ProductDetail: React.FC = () => {
+export const ProductDetails = () => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
 
@@ -31,10 +31,8 @@ const ProductDetail: React.FC = () => {
           {product.price}
         </Typography>
         <Typography variant='body1'>{product.description}</Typography>
-        {/* ... muestra otros detalles del producto */}
+        <img src={product.image} alt={product.title} />
       </CardContent>
     </Card>
   );
 };
-
-export default ProductDetail;
