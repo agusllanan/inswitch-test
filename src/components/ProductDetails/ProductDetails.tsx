@@ -26,13 +26,11 @@ export const ProductDetails = () => {
     isLoading: loading,
     isError,
     error,
-  } = useProductDetails(id || '');
+  } = useProductDetails(id ?? '');
 
   if (isError) {
     return (
-      <div>
-        Error al cargar los detalles del producto: {(error as Error).message}
-      </div>
+      <div>Error al cargar los detalles del producto: {error.message}</div>
     );
   }
 
