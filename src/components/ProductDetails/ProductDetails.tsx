@@ -6,13 +6,20 @@ import {
   Container,
   Grid,
   IconButton,
+  Skeleton,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import { Buttons } from '../Buttons';
-import Skeleton from '@mui/material/Skeleton';
 import { useProductDetails } from '../../hooks/useProductDetails';
 import HomeIcon from '@mui/icons-material/Home';
+import { Helmet } from 'react-helmet';
 export const ProductDetails = () => {
   const { id } = useParams<{ id: string }>();
+  const theme = useTheme();
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'lg'));
 
   const {
     data: product,
@@ -31,6 +38,10 @@ export const ProductDetails = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{loading ? 'Cargando...' : product?.title}</title>
+      </Helmet>
+
       <div
         style={{
           position: 'fixed',
@@ -53,7 +64,7 @@ export const ProductDetails = () => {
         alignItems='center'
         justifyContent='center'
       >
-        <Grid item xs={12} sm={10} md={8} lg={7}>
+        <Grid item xs={12} sm={10} md={10} lg={10}>
           <Card
             variant='outlined'
             style={{
@@ -69,7 +80,7 @@ export const ProductDetails = () => {
                 variant='h4'
                 component='div'
                 align='center'
-                style={{ backgroundColor: 'black', color: 'white' }}
+                style={{ color: 'black', fontWeight: 'bold', padding: '10px' }}
               >
                 {loading ? <Skeleton width={200} /> : product?.title}
               </Typography>
@@ -79,7 +90,8 @@ export const ProductDetails = () => {
                   padding: '10px',
                   margin: 'auto',
                   display: 'flex',
-                  flexDirection: 'column',
+                  flexDirection:
+                    isMobile || isTablet ? 'column-reverse' : 'row',
                   alignItems: 'center',
                   gap: '10px',
                 }}
@@ -112,7 +124,7 @@ export const ProductDetails = () => {
                       borderRadius: '10px',
                       textAlign: 'center',
                       padding: '5px',
-                      width: '15%',
+                      width: '35%',
                     }}
                   >
                     {loading ? (
@@ -123,19 +135,28 @@ export const ProductDetails = () => {
                   </Typography>
                   {product && <Buttons product={product} />}
                 </Container>
-                <Container>
+                <Container
+                  style={{
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '10px',
+                    margin: 'auto',
+                  }}
+                >
                   {loading ? (
                     <Skeleton variant='rectangular' width={210} height={300} />
                   ) : (
                     <img
                       src={product?.image}
                       alt={product?.title}
+                      height={isMobile ? '300px' : '500px'}
                       style={{
-                        width: '60%',
                         objectFit: 'cover',
                         borderRadius: '10px',
                         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
-                        margin: '10px',
+                        margin: 'auto',
                       }}
                     />
                   )}

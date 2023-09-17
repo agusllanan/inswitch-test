@@ -1,27 +1,51 @@
-# React + TypeScript + Vite
+# Aplicación de Productos Inswitch
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación React que muestra una lista de productos y detalles de cada producto usando la API FakeStore.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Lista de productos con carga perezosa (lazy loading).
+- Detalles del producto con título, descripción, precio, categoría e imagen.
+- Uso de React Query para la gestión de estado y caché.
+- Animaciones de transición de página con Framer Motion.
+- Manejo de metadatos del head con `react-helmet`.
 
-## Expanding the ESLint configuration
+## Instalación
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clona el repositorio:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+git clone [URL_DEL_REPOSITORIO]
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Instala las dependencias:
+
+```bash
+cd [NOMBRE_DEL_DIRECTORIO]
+npm install
+```
+
+1. Ejecuta la aplicación en modo desarrollo:
+
+```bash
+npm run dev
+```
+
+Visita `http://localhost:3000` en tu navegador para ver la aplicación en acción.
+
+## Librerías y herramientas utilizadas
+
+- [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/)
+- [React Query](https://react-query.tanstack.com/)
+- [Framer Motion](https://www.framer.com/api/motion/)
+- [React Helmet](https://github.com/nfl/react-helmet)
+- [Material-UI](https://mui.com/)
+
+## Contribuciones
+
+Si deseas contribuir al proyecto, por favor envía un Pull Request. Asegúrate de probar tus cambios localmente antes de enviarlos.
+
+## Licencia
+
+MIT License. Ver archivo `LICENSE` para más detalles.
