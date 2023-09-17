@@ -4,7 +4,7 @@ Una aplicación React en Vite que muestra una lista de productos y detalles de c
 
 ## Características
 
-- Lista de productos con carga perezosa (lazy loading).
+- Listado de productos llamados desde la api
 - Detalles del producto con título, descripción, precio, categoría e imagen.
 - Uso de React Query para la gestión de estado y caché.
 - Animaciones de transición de página con Framer Motion.
