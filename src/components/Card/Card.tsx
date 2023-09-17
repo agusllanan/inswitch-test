@@ -10,11 +10,9 @@ import {
 } from '@mui/material';
 import LinesEllipsis from 'react-lines-ellipsis';
 import { Link } from 'react-router-dom';
-import { useCart } from '../../hooks/useCart';
+import { Buttons } from '../Buttons';
 
 export const CardComponent = ({ product }: { product: Product }) => {
-  const { addToCart, removeFromCart, isProductInCart } = useCart();
-
   return (
     <>
       <Card
@@ -34,7 +32,7 @@ export const CardComponent = ({ product }: { product: Product }) => {
           cursor: 'pointer',
         }}
       >
-        <CardContent>
+        <CardContent style={{ height: '300px' }}>
           <CardMedia
             component='img'
             height='194'
@@ -76,6 +74,9 @@ export const CardComponent = ({ product }: { product: Product }) => {
               width: '100%',
               display: 'flex',
               justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'column',
+              gap: '10px',
             }}
           >
             <Button
@@ -86,7 +87,7 @@ export const CardComponent = ({ product }: { product: Product }) => {
               to={`/productos/${product.id}`}
               sx={{ width: '300px' }}
             >
-              Ver detalles
+              Ver producto
             </Button>
           </CardActions>
           <CardActions
@@ -98,27 +99,7 @@ export const CardComponent = ({ product }: { product: Product }) => {
               gap: '10px',
             }}
           >
-            {!isProductInCart(product.id) ? (
-              <Button
-                variant='contained'
-                size='small'
-                onClick={() => addToCart(product)}
-                color='primary'
-                sx={{ width: '300px' }}
-              >
-                Agregar al carrito
-              </Button>
-            ) : (
-              <Button
-                variant='outlined'
-                color='error'
-                size='small'
-                onClick={() => removeFromCart(product.id)}
-                sx={{ width: '300px' }}
-              >
-                Quitar del carrito
-              </Button>
-            )}
+            <Buttons product={product} />
           </CardActions>
         </Container>
       </Card>
