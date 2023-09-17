@@ -31,7 +31,7 @@ npm install
 npm run dev
 ```
 
-Visita `http://localhost:3000` en tu navegador para ver la aplicación en acción.
+Visita `http://localhost:5173/` en tu navegador para ver la aplicación en acción.
 
 ## Librerías y herramientas utilizadas
 
